@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>FireBuzz - Game Show Buzzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="buzzerApp" ng-controller="buzzerController as vm">
+
+    <h1 class="center">FireBuzz</h1>
+    <div class="center"><small>Game Show Buzzer</small></div>
+    <br>
+    <h2 class="center">Your User/Team Name is {{vm.team.name}}</h2>
+    <div class="center"><small>Change it here: </small><input type="text" ng-model="vm.team.name"></div>
+    <br>
+    <br>
+    <div class="center">
+        <button class="select-button" ng-click="vm.buzzIn()"></button>
+    </div>
+    <br>
+    <div class="center"><small>{{vm.helpfulMessage}}</small></div>
+    <br>
+    <br>
+    <br>
+
+    <h2>Who just buzzed?</h2>
+    <button ng-click="vm.clearCurrentBuzzes()">Clear The Board</button>
+    <ul>
+      <li ng-repeat="buzz in vm.currentBuzzes">{{ buzz.team.name }}</li>
+    </ul>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4>Last 25 Buzzes</h4>
+    <ul>
+      <li ng-repeat="buzz in vm.buzzes">{{ buzz.team.name }}</li>
+    </ul>
+
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA4mfAeilyZiyyE4R-tHl1WP_W7PSmCYKw",
+        authDomain: "firebuzz-5e622.firebaseapp.com",
+        databaseURL: "https://firebuzz-5e622.firebaseio.com",
+        projectId: "firebuzz-5e622",
+        storageBucket: "firebuzz-5e622.appspot.com",
+        messagingSenderId: "527373258225"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
+
+    <!-- Buzzer Application Script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
