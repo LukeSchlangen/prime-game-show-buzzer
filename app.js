@@ -5,7 +5,7 @@ app.controller('buzzerController', ['$firebaseArray', '$timeout', function ($fir
     var buzzesRef = firebase.database().ref().child("buzzes");
     var currentBuzzesRef = firebase.database().ref().child("current_buzzes");
 
-    self.buzzes = $firebaseArray(buzzesRef.limitToLast(25));
+    self.buzzes = $firebaseArray(buzzesRef.limitToLast(100));
     self.currentBuzzes = $firebaseArray(currentBuzzesRef);
 
     self.helpfulMessage = 'Click The Button to Buzz In';
@@ -36,6 +36,11 @@ app.controller('buzzerController', ['$firebaseArray', '$timeout', function ($fir
         console.log('Clearing the board');
         self.currentBuzzes.forEach(function (element) {
             self.currentBuzzes.$remove(element);
+        });
+        self.buzzes.$add({
+            team: {
+                name: self.team.name + " CLEARED THE BOARD!!"
+            }
         });
     }
 
