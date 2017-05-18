@@ -11,7 +11,7 @@ app.controller('buzzerController', ['$firebaseArray', '$timeout', function ($fir
     self.helpfulMessage = 'Click The Button to Buzz In';
 
     self.buzzIn = function () {
-        if (self.justClicked) {
+        if (self.justClicked && self.currentBuzzes.length > 0) {
             self.helpfulMessage = 'Patience please! You can only buzz in once every 5 seconds.';
         } else {
             self.justClicked = true;
